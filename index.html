@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>tusumie</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+
+    body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('images/sky.png') center/cover no-repeat;
+        opacity: 0.25; /* 25% opacity */
+        z-index: -1; /* Keeps it behind everything */
+        transform: translateZ(0); /* Helps with GPU rendering */
+    }       
+    body {
+      margin: 0 auto;
+      width: 100%;
+      max-width: 100%;
+      background-color: #c1cffd;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    header {
+      margin-top: 50px;
+      animation: fadeInScale 1.5s ease-in-out forwards;
+      opacity: 0;
+      transform: scale(0.8);
+      max-width: 100%;
+      margin: 0 auto;
+    }
+
+    header img {
+      width: 500px;
+      transition: transform 0.3s ease-in-out;
+      margin: 0 auto;
+      max-width: 100%;
+    }
+
+    header img:hover {
+      transform: scale(1.05);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+      padding: 50px 20px;
+      width: 100%;
+      max-width: 800px;
+      opacity: 0;
+      transform: translateY(10px);
+      animation: fadeUp 1.5s ease-in-out 1.6s forwards;
+      margin: 0 auto;
+      justify-content: center;
+    }
+
+    @keyframes breathe {
+     0% { transform: translateY(0); }
+     50% { transform: translateY(-5px); }
+     100% { transform: translateY(0); }
+    }
+
+    .single {
+      max-width: 100%;
+      margin: 0 auto;
+      position: relative;
+      border: 2px solid #323232;
+      overflow: hidden;
+      transition: transform 0.3s ease-in-out;
+      animation: breathe 4s ease-in-out infinite; 
+    }
+
+    .single img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: filter 0.3s ease-in-out;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+      text-align: center;
+      padding: 10px;
+    }
+
+    .single:hover img {
+      filter: blur(5px);
+    }
+
+    .single:hover {
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+      transform: scale(1.02);
+    }
+
+    .single:hover .overlay {
+      opacity: 1;
+    }
+
+
+    footer {
+      font-size: 12px;
+      color: #323232;
+      text-align: center;
+      margin: 10px 0;
+      transition: opacity 0.3s ease-in-out;
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    footer:hover {
+      opacity: 0.5;
+    }
+
+    @keyframes fadeInScale {
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="images/logo.png" alt="tusumie logo" />
+  </header>
+
+  <section class="grid">
+
+    <a href="https://link.to/single1" class="single">
+      <img src="images/covers/threads.png" alt="threads cover" />
+      <div class="overlay">
+        <div>threads</div>
+        <div>november 1, 2024</div>
+      </div>
+    </a>
+
+    <a href="https://link.to/single1" class="single">
+        <img src="images/covers/cmb.png" alt="cmb cover" />
+        <div class="overlay">
+          <div>call me back</div>
+          <div>june 21, 2024</div>
+        </div>
+      </a>
+
+  </section>
+
+  <section class="grid">
+
+    <a href="https://soundcloud.com/tusumie/maybe-you-havent-either" class="single">
+      <img src="images/covers/myhe.jpg" alt="myhe cover" />
+      <div class="overlay">
+        <div>maybe you haven't either</div>
+        <div>march 18, 2025</div>
+      </div>
+    </a>
+
+    <a href="https://soundcloud.com/tusumie/bird" class="single">
+        <img src="images/covers/bird.jpg" alt="bird cover" />
+        <div class="overlay">
+          <div>bird</div>
+          <div>february 28, 2025</div>
+        </div>
+      </a>
+
+      <a href="https://soundcloud.com/tusumie/str" class="single">
+        <img src="images/covers/str.jpg" alt="str cover" />
+        <div class="overlay">
+          <div>str</div>
+          <div>??</div>
+        </div>
+      </a>
+
+  </section>
+
+
+
+  <footer>
+    <div>&lt;3</div>
+  </footer>
+</body>
+</html>
