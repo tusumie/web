@@ -163,6 +163,19 @@
         grid-template-columns: 1fr;
       }
     }
+
+  .hidden {
+  display: none; /* Hide by default */
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  .hidden.show {
+    display: grid;
+    opacity: 1;
+    transform: translateY(0);
+  }
   </style>
 </head>
 <body>
@@ -172,7 +185,7 @@
 
   <section class="grid">
 
-    <a href="https://distrokid.com/hyperfollow/tusumie/threads" class="single">
+    <a href="https://link.to/single1" class="single">
       <img src="images/covers/threads.png" alt="threads cover" />
       <div class="overlay">
         <div>threads</div>
@@ -180,7 +193,7 @@
       </div>
     </a>
 
-    <a href="https://distrokid.com/hyperfollow/tusumie/call-me-back-3" class="single">
+    <a href="https://link.to/single1" class="single">
         <img src="images/covers/cmb.png" alt="cmb cover" />
         <div class="overlay">
           <div>call me back</div>
@@ -216,7 +229,32 @@
         </div>
       </a>
 
+
   </section>
+
+  <section id="hidden-single" class="grid hidden">
+    <a href="https://soundcloud.com/tusumie/circles/s-XlbRCjwWVXu?si=7f95c8bf37fe445e844d393f5eb401a9&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing" class="single">
+        <img src="images/covers/hidden.jpg" alt="Hidden Single Cover" />
+        <div class="overlay">
+            <div>circles</div>
+            <div>??</div>
+        </div>
+    </a>
+</section>
+
+<script>
+  document.querySelector("header img").addEventListener("click", function() {
+    let hiddenSection = document.getElementById("hidden-single");
+    
+    if (hiddenSection.classList.contains("show")) {
+      hiddenSection.classList.remove("show");
+      setTimeout(() => hiddenSection.style.display = "none", 500); // Hide after animation
+    } else {
+      hiddenSection.style.display = "grid"; // Show first to allow animation
+      setTimeout(() => hiddenSection.classList.add("show"), 10);
+    }
+  });
+</script>
 
 
 
