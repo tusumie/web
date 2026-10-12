@@ -43,6 +43,19 @@ button:focus-visible, a:focus-visible, iframe:focus-visible, input:focus-visible
 }
 .background-visualizer.is-playing { opacity: 0.16; }
 .background-visualizer.is-playing.is-pastel { opacity: 0.26; }
+.background-atmosphere { position: fixed; inset: 0; overflow: hidden; pointer-events: none; user-select: none; z-index: 0; color: #d2d2d5; }
+.ascii-cloud { position: absolute; left: 0; width: max-content; margin: 0; font-family: 'Courier New', monospace; font-size: 12px; line-height: 1.15; white-space: pre; opacity: 0.12; animation: cloud-drift 100s linear infinite; animation-play-state: paused; }
+.cloud-1 { top: 16%; animation-delay: -20s; }
+.cloud-2 { top: 65%; font-size: 10px; animation-duration: 125s; animation-delay: -80s; }
+.cloud-3 { top: 84%; font-size: 13px; animation-duration: 115s; animation-delay: -42s; }
+.title-lane { position: absolute; top: 30%; width: 100%; opacity: 0; transition: opacity 1.2s ease; }
+.title-lane-alt { top: 79%; }
+.title-stream { display: flex; width: max-content; animation: title-drift 65s linear infinite; animation-play-state: paused; }
+.title-copy { flex-shrink: 0; min-width: 100vw; padding: 0 48px; text-align: center; font-family: 'Courier New', monospace; font-size: clamp(14px, 1.6vw, 22px); line-height: 1.5; white-space: nowrap; }
+.title-lane-alt .title-stream { animation-duration: 85s; animation-direction: reverse; }
+.title-lane-alt .title-copy { font-size: clamp(12px, 1.2vw, 17px); }
+.background-atmosphere.is-playing .title-lane { opacity: 0.12; }
+.background-atmosphere.is-playing .ascii-cloud, .background-atmosphere.is-playing .title-stream { animation-play-state: running; }
 .site { position: relative; z-index: 1; width: min(760px, calc(100% - 64px)); margin: 0 auto; }
 .site-header { display: flex; justify-content: center; padding: 28px 0 30px; }
 h1 { margin: 0; width: min(400px, 80%); }
@@ -94,10 +107,17 @@ h1 img { display: block; width: 100%; height: auto; filter: brightness(0) invert
 
 @keyframes artwork-in { from { opacity: 0.6; } to { opacity: 1; } }
 @keyframes playing { from { transform: scaleY(0.35); } to { transform: scaleY(1); } }
+@keyframes title-drift { from { transform: translate3d(0, 0, 0); } to { transform: translate3d(-50%, 0, 0); } }
+@keyframes cloud-drift { from { transform: translate3d(calc(-100% - 20vw), 0, 0); } to { transform: translate3d(120vw, 0, 0); } }
 
 @media (max-width: 700px) {
   .site { width: min(520px, calc(100% - 40px)); }
   .site-header { padding: 16px 0 22px; }
+  .ascii-cloud { opacity: 0.1; font-size: 9px; }
+  .cloud-2 { font-size: 8px; }
+  .cloud-3 { display: none; }
+  .title-lane { top: 54%; }
+  .title-lane-alt { top: 74%; }
   h1 { width: min(340px, 85%); }
   .song-picker { grid-template-columns: 1fr; gap: 26px; }
   .featured-artwork { width: min(300px, 78%); justify-self: center; }
@@ -117,5 +137,5 @@ h1 img { display: block; width: 100%; height: auto; filter: brightness(0) invert
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
-  .background-visualizer { display: none; }
+  .background-visualizer, .background-atmosphere { display: none; }
 }

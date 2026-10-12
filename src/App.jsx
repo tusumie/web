@@ -4,6 +4,7 @@ import { tracks, releases } from './data/tracks.js';
 import { getWidgetUrl } from './soundcloud.js';
 import { useSoundCloud } from './useSoundCloud.js';
 import BackgroundVisualizer from './BackgroundVisualizer.jsx';
+import BackgroundAtmosphere from './BackgroundAtmosphere.jsx';
 
 function ArrowIcon() {
   return (
@@ -70,6 +71,7 @@ export default function App() {
 
   return (
     <>
+      <BackgroundAtmosphere playing={player.playing} title={track.title} trackId={track.slug} />
       <BackgroundVisualizer
         playing={player.playing}
         position={player.position}
